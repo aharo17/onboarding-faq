@@ -1,0 +1,361 @@
+/* ------ CSS Vars ------ */
+:root{
+    /* Color theme swatches */
+    --dk-blue: #0F1C79;
+    --med-blue: #273693;
+    --lt-blue: #44539C;
+    --dk-gray: #39393A;
+    --gray: #838995;
+    --lt-gray: #E9E9E9;
+    --silver: #D8D8D8;
+    --black: black;
+    --white: white;
+    --dk-box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    --lt-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    /* Google Fonts Family */
+    --fonts: "Moderustic", sans-serif;
+}
+
+/* Body */
+
+body{
+    height: 100vh;
+    font-family: var(--fonts);
+    background-color: var(--silver);
+
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 94px 1fr 1fr;
+    grid-template-areas: 
+        "header header"
+        "side main"
+        "side footer";
+}
+
+/* Header */
+
+.header{
+    background-color: var(--black);
+    
+    /* Placement in Body Grid */
+        grid-area: header;
+    
+    /* Elements placement in Header Grid*/
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    place-items: center;
+    grid-template-areas: 
+        "logo title";
+}
+
+.header a{
+    width: auto;
+    height: auto;
+
+
+    /* Placement in Header Grid */
+    grid-area: logo;
+}
+
+.header h1{
+    color: var(--white);
+
+    /* Placement in Header Grid */
+    grid-area: title;
+}
+
+/* Navbar for Mobile needs to be hidden until screen size reaches max 1024 */
+
+.header nav{
+    display: none;
+}
+
+.header nav ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.header nav li{
+    margin: 20px 0;
+    text-align: center;
+}
+
+.header nav a{
+    display: block;
+    background-color: var(--lt-gray);
+    color: var(--black);
+    text-decoration: none;
+    border: 1px solid var(--black);
+    padding: 15px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: var(--lt-box-shadow);
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.header nav a:hover{
+    background-color: var(--white);
+    transform: translateY(-2px); color: var(--dk-blue);
+}
+
+/* Sidebar */
+
+.sidebar{
+    background-color: var(--white);
+
+    /* Placement in Body Grid */
+    grid-area: side;
+}
+
+.sidebar nav{
+    padding: 20px 0;
+}
+
+.sidebar ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.sidebar li{
+    margin: 20px 0;
+    text-align: center;
+}
+
+.sidebar a{
+    display: block;
+    background-color: var(--lt-gray);
+    color: var(--black);
+    text-decoration: none;
+    border: 1px solid var(--black);
+    padding: 15px;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: var(--lt-box-shadow);
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.sidebar a:hover{
+    background-color: var(--white);
+    transform: translateY(-2px); color: var(--dk-blue);
+}
+
+.mobile-sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.mobile-sidebar li{
+    width: 100%;
+}
+
+.mobile-sidebar a{
+    width: 100%;
+}
+
+/* Main */
+
+.main{
+    background-color: var(--silver);
+    padding: 25px;
+
+    /* Placement in Body Grid */
+        grid-area: main;
+
+    /* Elements within Main Grid */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr;
+    grid-template-areas: 
+        "c1 c2"
+        "c3 c4";
+    gap: 20px;
+}
+
+/* Cards within Main */
+
+.card{
+    background-color: var(--white);
+    border-radius: 10px;
+}
+
+.card:nth-child(1){
+    grid-area: c1;
+}
+
+.card:nth-child(2){
+    grid-area: c2;
+}
+
+.card:nth-child(3){
+    grid-area: c3;
+}
+
+.card:nth-child(4){
+    grid-area: c4;
+}
+
+.card h2{
+    color: var(--lt-blue);
+    font-size: 32px;
+    text-align: center;
+}
+
+.card h3{
+    color: var(--med-blue);
+    font-size: 28px;
+    text-align: center;
+}
+
+.card img{
+    display: block;
+    margin: 0 auto;
+}
+
+.card p{
+    padding: 1.5rem;
+}
+
+.card p span{
+    font-weight: bold;
+    color: var(--dk-gray);
+}
+
+.card iframe{
+    display: block;
+    margin: 15% auto;
+}
+
+.card a{
+    display: block;
+    background-color: var(--lt-gray);
+    text-align: center;
+    color: var(--black);
+    text-decoration: none;
+    border: 1px solid var(--black);
+    padding: 35px;
+    width: 40%;
+    margin: 22.5% auto 15%;
+    border-radius: 5px;
+    box-shadow: var(--lt-box-shadow);
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.card span a{
+    display: block;
+    padding: 10px;
+    font-size: 28px;
+    width: fit-content;
+    margin: 1rem auto;
+    color: var(--lt-blue);
+}
+
+.card a:hover{
+    background-color: var(--white);
+    transform: translateY(-2px); color: var(--dk-blue);
+}
+
+#email, #phone{
+    all: initial;
+    font-family: var(--fonts);
+    text-decoration: underline;
+    color: mediumblue;
+    font-weight: bold;
+}
+
+footer{
+    grid-area: footer;
+    text-align: center;
+    background-color: var(--silver);
+    height: 100%;
+}
+
+@media (max-width: 1024px){
+    body{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: 
+            "header"
+            "main"
+            "footer";
+    }
+
+    .header{
+        place-items: initial;
+        grid-template-columns: 0.15fr 1fr;
+        grid-template-rows: initial;
+        grid-template-areas: 
+            "logo nav nav";
+    }
+
+    .header h1{
+        display: none;
+    }
+
+    .header nav{
+        display: inline;
+    }
+
+    .header img{
+        width: fit-content;
+    }
+
+    .sidebar a{
+        display: none;
+    }
+
+    .main{
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr 0.5fr 1fr 1fr;
+        grid-template-areas: initial;
+    }
+
+    .card{
+        grid-area: initial !important;
+    }
+
+    #hamburger-icon{
+        display: block;
+    }
+}
+
+@media (max-width: 850px){
+    .header nav a{
+        width: 60%;
+    }
+}
+
+@media (max-width: 420px){
+    .header nav a{
+        width: 50%;
+    }
+}
